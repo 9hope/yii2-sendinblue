@@ -171,10 +171,10 @@ class Message extends BaseMessage
     {
         $container = new SendinBlue\Client\Model\SendSmtpEmailSender();
         if (is_array($from)) {
-            $name = key($from);
-            $email = reset($from);
-            $container->setName($name);
+            $email = key($from);
+            $name = reset($from);
             $container->setEmail($email);
+            $container->setName($name);
         } else {
             $container->setEmail($from);
         }

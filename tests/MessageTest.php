@@ -207,7 +207,7 @@ final class MessageTest extends TestCase
     {
         $this->assertNull($this->message->getFrom()); 
         
-        $message = $this->message->setFrom(['testFrom' => 'testFrom@example.com']);
+        $message = $this->message->setFrom(['testFrom@example.com' => 'testFrom']);
 
         $this->assertInstanceOf(Message::class, $message); 
         
