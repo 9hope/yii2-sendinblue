@@ -201,6 +201,18 @@ final class MessageTest extends TestCase
         $this->assertEquals($expected, $this->message->getAttributes());
         $this->assertEquals($attributes, $this->message->getAttributes(false));
         
-    }       
+    }
+    
+    public function testCanGetSetFromAlias()
+    {
+        $this->assertNull($this->message->getFrom()); 
+        
+        $message = $this->message->setFrom(['testFrom' => 'testFrom@example.com']);
+
+        $this->assertInstanceOf(Message::class, $message); 
+        
+        $this->assertInstanceOf(SendinBlue\Client\Model\SendSmtpEmailSender::class, $this->message->getSendinblueModel()->getSender());
+        $this->assertEquals($this->message->getFrom(), 'testFrom@example.com');
+    }
 
 }
